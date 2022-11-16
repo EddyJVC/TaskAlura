@@ -1,4 +1,7 @@
 // Immediately invoked function expression IIFE - Mas Seguridad
+import checkComplete from "./components/checkComplete.js";
+import deleteIcon from "./components/deleteIcon.js";
+
 (() => {
   const btn = document.querySelector("[data-form-btn]");
 
@@ -16,27 +19,11 @@
     titleTask.classList.add("task");
     titleTask.innerText = value;
     taskContent.appendChild(titleTask);
-    const trashTask = document.createElement("i");
-    trashTask.classList.add("fas", "fa-trash-alt", "trashIcon", "icon");
     task.appendChild(taskContent);
-    task.appendChild(trashTask);
+    task.appendChild(deleteIcon());
     list.appendChild(task);
   };
 
   //listener
   btn.addEventListener("click", createTask);
-
-  const checkComplete = () => {
-    const i = document.createElement("i");
-    i.classList.add("far", "fa-check-square", "icon");
-    i.addEventListener("click", completeTask);
-    return i;
-  };
-
-  const completeTask = (e) => {
-    const element = e.target;
-    element.classList.toggle("fas");
-    element.classList.toggle("completeIcon");
-    element.classList.toggle("far");
-  };
 })();
